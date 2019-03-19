@@ -46,16 +46,42 @@ class _Parser extends State<Parser> {
       onSubmitted: (String value) {
         Operation newOperation = new Operation(int.parse(value));
         setState(() {
-          if(check1) textAnswer = newOperation.toBinary();
+          if (check1)
+            textAnswer = newOperation.toBinary();
+          else if (check2)
+            newOperation.toDecimal() == "-1"
+                ? textAnswer = "¿Qué haces?"
+                : textAnswer = newOperation.toDecimal();
         });
       },
       onChanged: (String value) {
-        try{
-          int.parse(value);
-        }catch (e){
+        if(value.isEmpty){
           setState(() {
-            inputIsValid = false;
+            textAnswer = "";
           });
+        }else {
+          try {
+            Operation newOperation = new Operation(int.parse(value));
+            if (check1) {
+              setState(() {
+                textAnswer = newOperation.toBinary();
+              });
+            } else if (check2) {
+              if (newOperation.toDecimal() == "-1") {
+                setState(() {
+                  textAnswer = "¿Qué haces?";
+                });
+              } else {
+                setState(() {
+                  textAnswer = newOperation.toDecimal();
+                });
+              }
+            }
+          } catch (e) {
+            setState(() {
+              inputIsValid = false;
+            });
+          }
         }
       },
     );
@@ -96,7 +122,7 @@ class _Parser extends State<Parser> {
           ),
 
           new Container(
-            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 170.0),
+            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 180.0),
             height: 260.0,
             width: MediaQuery.of(context).size.width,
             child: new Row(
@@ -127,8 +153,8 @@ class _Parser extends State<Parser> {
             ),
           ),
           new Container(
-            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 240.0),
-            height: 290.0,
+            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 250.0),
+            height: 390.0,
             child: new Center(
               child: new Text(
                 textAnswer,

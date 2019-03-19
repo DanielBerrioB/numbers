@@ -1,3 +1,5 @@
+import "dart:math" as math;
+
 class Operation{
   int number;
 
@@ -18,5 +20,26 @@ class Operation{
     var modToReturn = inReverse.toList();
     modToReturn.forEach((i) => answer += i.toString());
     return answer;
+  }
+  //This function parse from binary to decimal
+  String toDecimal(){
+    List numberList = number.toString().split("");
+    int result = -1;
+    if(verifyNumber(numberList)){
+      result = 0;
+      for(var i = numberList.length - 1; i >= 0;i--){
+        if(numberList[i] == "1") result += math.pow(2, i);
+      }
+      return result.toString();
+    }else{
+      return result.toString();
+    }
+  }
+
+  verifyNumber(List number){
+    for(var i = 2; i < 10; i++){
+      if(number.contains(i.toString())) return false;
+    }
+    return true;
   }
 }
