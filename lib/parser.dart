@@ -47,6 +47,7 @@ class _Parser extends State<Parser> {
         Operation newOperation = new Operation(int.parse(value));
         setState(() {
           if(check1) textAnswer = newOperation.toBinary();
+          else if (check2) textAnswer = newOperation.toDecimal();
         });
       },
       onChanged: (String value) {

@@ -1,3 +1,5 @@
+import "dart:math" as math;
+
 class Operation{
   int number;
 
@@ -18,5 +20,14 @@ class Operation{
     var modToReturn = inReverse.toList();
     modToReturn.forEach((i) => answer += i.toString());
     return answer;
+  }
+
+  String toDecimal(){
+    List numberList = number.toString().split("");
+    int result = 0;
+    for(var i = numberList.length - 1; i >= 0;i--){
+      result += math.pow(2, i);
+    }
+    return result.toString();
   }
 }
