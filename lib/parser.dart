@@ -52,6 +52,8 @@ class _Parser extends State<Parser> {
             newOperation.toDecimal() == "-1"
                 ? textAnswer = "¿Qué haces?"
                 : textAnswer = newOperation.toDecimal();
+          if(check1) textAnswer = newOperation.toBinary();
+          else if (check2) textAnswer = newOperation.toDecimal();
         });
       },
       onChanged: (String value) {
