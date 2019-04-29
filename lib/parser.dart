@@ -137,14 +137,14 @@ class _Parser extends State<Parser> {
           ),
 
           new Container(
-            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 190.0),
+            padding: new EdgeInsets.only(top: 190.0),
             height: 230.0,
             width: MediaQuery.of(context).size.width,
             child: new Row(
               children: <Widget>[
                 new Center(
                   child: new Container(
-                    width: MediaQuery.of(context).size.width / 3 + 30,
+                    width: MediaQuery.of(context).size.width / 3 + 61,
                     child: new CheckboxListTile(
                       value: check1,
                       onChanged: check1Changed,
@@ -155,7 +155,7 @@ class _Parser extends State<Parser> {
                 ),
                 new Center(
                   child: new Container(
-                    width: MediaQuery.of(context).size.width / 3 + 30,
+                    width: MediaQuery.of(context).size.width / 3 + 51,
                     child: new CheckboxListTile(
                       value: check2,
                       onChanged: check2Changed,
@@ -168,13 +168,14 @@ class _Parser extends State<Parser> {
             ),
           ),
           new Container(
-            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 250.0),
-            height: 280.0,
+            padding: new EdgeInsets.only(top: 250.0),
+            height: 290.0,
+            width: MediaQuery.of(context).size.width,
             child: new Row(
               children: <Widget>[
                 new Center(
                   child: new Container(
-                    width: MediaQuery.of(context).size.width / 3 + 30,
+                    width: MediaQuery.of(context).size.width / 3 + 61,
                     child: new CheckboxListTile(
                       value: check3,
                       onChanged: check3Changed,
