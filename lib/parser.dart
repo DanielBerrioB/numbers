@@ -11,13 +11,14 @@ class _Parser extends State<Parser> {
   //that verifies if the content is properly. Second check1 verifies
   //if the CheckBox1 has been selected at the same for check2.
   //check1 means binary and check2 means decimal
-  bool inputIsValid = true, check1 = false, check2 = false;
+  bool inputIsValid = true, check1 = false, check2 = false, check3 = false;
   String textAnswer = "";
 
   void check1Changed(bool value) {
     setState(() {
       check1 = true;
       check2 = false;
+      check3 = false;
     });
   }
 
@@ -25,9 +26,17 @@ class _Parser extends State<Parser> {
     setState(() {
       check2 = true;
       check1 = false;
+      check3 = false;
     });
   }
 
+  void check3Changed(bool value) {
+    setState(() {
+      check3 = true;
+      check1 = false;
+      check2 = false;
+    });
+  }
   //Here you can create a text field where the
   //number will be enter. At onSubmitted we are
   //going to execute the task depending of the
@@ -78,6 +87,10 @@ class _Parser extends State<Parser> {
                   textAnswer = newOperation.toDecimal();
                 });
               }
+            } else if (check3){
+              setState(() {
+                textAnswer = newOperation.toHexadecimal().toUpperCase();
+              });
             }
           } catch (e) {
             setState(() {
@@ -124,8 +137,8 @@ class _Parser extends State<Parser> {
           ),
 
           new Container(
-            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 180.0),
-            height: 260.0,
+            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 190.0),
+            height: 230.0,
             width: MediaQuery.of(context).size.width,
             child: new Row(
               children: <Widget>[
@@ -156,6 +169,25 @@ class _Parser extends State<Parser> {
           ),
           new Container(
             padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 250.0),
+            height: 280.0,
+            child: new Row(
+              children: <Widget>[
+                new Center(
+                  child: new Container(
+                    width: MediaQuery.of(context).size.width / 3 + 30,
+                    child: new CheckboxListTile(
+                      value: check3,
+                      onChanged: check3Changed,
+                      title: Text("Hexadecimal"),
+                      activeColor: Colors.lightBlue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          new Container(
+            padding: new EdgeInsets.only(left: 20.0, right: 20.0, top: 350.0),
             height: 390.0,
             child: new Center(
               child: new Text(

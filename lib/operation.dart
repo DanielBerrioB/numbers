@@ -24,16 +24,21 @@ class Operation{
   //This function parse from binary to decimal
   String toDecimal(){
     List numberList = number.toString().split("");
-    int result = -1;
+    int result = -1, cont = 0;
     if(verifyNumber(numberList)){
       result = 0;
       for(var i = numberList.length - 1; i >= 0;i--){
-        if(numberList[i] == "1") result += math.pow(2, i);
+        if(numberList[i] == "1") result += math.pow(2, cont);
+        cont++;
       }
       return result.toString();
     }else{
       return result.toString();
     }
+  }
+
+  String toHexadecimal(){
+    return number.toRadixString(16).toString();
   }
 
   verifyNumber(List number){
